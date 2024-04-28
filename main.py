@@ -116,6 +116,7 @@ calendar_result = calendar(events=events, options=calendar_options, key="calenda
 st.write(calendar_result)
 
 # How to push code to Github:
+# git pull --rebase origin main
 # git add .
 # git commit -m "Your commit message here"
 # git push origin main
