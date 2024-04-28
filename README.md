@@ -1,4 +1,4 @@
-# Habit Calendar
+# Habit Calendar (HabitCal)
 Calendar Web Application for NYUSH Capstone
 
 ## Overview
