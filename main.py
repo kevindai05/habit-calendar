@@ -1,19 +1,13 @@
+# 1. Imports
 import streamlit as st
 from datetime import datetime, time, timedelta
 import json
 from streamlit_calendar import calendar
 
+# 2. Constants
+
 # Define the path to the JSON file for events
 EVENTS_FILE = 'events.json'
-
-# Load events from the JSON file
-def load_events():
-    try:
-        with open(EVENTS_FILE, 'r') as file:
-            return json.load(file)
-    except (FileNotFoundError, json.JSONDecodeError):
-        # Return an empty list if there are problems loading the file
-        return []
 
 # Color options for events
 color_options = {
@@ -24,10 +18,22 @@ color_options = {
     "Purple": "#800080"
 }
 
+# 3. Function Definitinos
+
+# Load events from the JSON file
+def load_events():
+    try:
+        with open(EVENTS_FILE, 'r') as file:
+            return json.load(file)
+    except (FileNotFoundError, json.JSONDecodeError):
+        # Return an empty list if there are problems loading the file
+        return []
+
 # Add an event to the JSON file
 def add_event_to_json(event_data):
     events = load_events()
     events.append(event_data)
+    # Save events in JSON
     with open(EVENTS_FILE, 'w') as file:
         json.dump(events, file)
     st.success('Event added successfully!')
@@ -38,9 +44,13 @@ def clear_all_events():
         json.dump([], file)  # Write an empty list to the file
     st.success('All events have been cleared.')
 
+# 4. Streamlit Config
+
 # Set up the Streamlit page
 st.set_page_config(page_title="Habit Calendar", page_icon="📆")
 st.title("Habit Calendar App")
+
+# 5. Main Code Interface
 
 # Event form with validation
 with st.form("event_form"):
@@ -100,7 +110,6 @@ if st.button('Clear All Events'):
 # Calendar component
 st.subheader('Calendar')
 events = load_events()  # Load events for the calendar
-
 calendar_options = {
     "locale": "en",
     "selectable": True,
@@ -118,7 +127,9 @@ calendar_result = calendar(events=events, options=calendar_options, key="calenda
 # Debug information if needed
 st.write(calendar_result)
 
+
 # How to push code to Github:
+
 # git pull --rebase origin main
 # git add .
 # git commit -m "Your commit message here"
