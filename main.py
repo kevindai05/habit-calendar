@@ -94,6 +94,9 @@ with st.form("event_form"):
             }
             add_event_to_json(event_data)
 
+if st.button('Clear All Events'):
+    clear_all_events()
+
 # Calendar component
 st.subheader('Calendar')
 events = load_events()  # Load events for the calendar

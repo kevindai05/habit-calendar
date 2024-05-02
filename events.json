@@ -1,64 +1,16 @@
 [
   {
-    "title": "asdfds",
-    "start": "2024-04-26T02:17:00",
-    "end": "2024-04-26T03:45:00",
-    "color": "#FF6C6C"
-  },
-  {
-    "title": "Event testing",
-    "start": "2024-04-26T13:01:00",
-    "end": "2024-04-26T13:15:00",
-    "color": "#FF6C6C"
-  },
-  {
-    "title": "asd",
-    "start": "2024-04-26T13:03:00",
-    "end": "2024-04-26T13:03:00",
-    "color": "#FF6C6C"
-  },
-  {
-    "title": "Event",
-    "start": "2024-04-26T00:00:00",
-    "end": "2024-04-26T12:45:00",
-    "color": "#008000"
-  },
-  {
-    "title": "ninawoidnawsdwa",
-    "start": "2024-04-26T13:18:00",
-    "end": "2024-04-29T18:00:00",
-    "color": "#800080"
-  },
-  {
-    "title": "awda",
-    "start": "2024-04-26T00:00:00",
-    "end": "2024-04-26T13:19:00",
-    "color": "#0000FF"
-  },
-  {
-    "title": "Something happening",
-    "start": "2024-04-26",
-    "end": "2024-04-26",
-    "color": "#0000FF"
-  },
-  {
-    "title": "Something going on",
-    "start": "2024-04-26",
-    "end": "2024-04-26",
-    "color": "#FFFF00"
-  },
-  {
-    "title": "awd",
-    "start": "2024-04-16T00:00:00",
-    "end": "2024-04-30T23:59:59.999999",
-    "color": "#0000FF",
+    "title": "event",
+    "start": "2024-05-02T00:00:00",
+    "end": "2024-05-03T23:59:59.999999",
+    "color": "#008000",
     "allDay": true
   },
   {
-    "title": "asdfghjk",
-    "start": "2024-04-26T13:35:00",
-    "end": "2024-04-27T13:35:00",
+    "title": "awdasd",
+    "start": "2024-05-02T00:00:00",
+    "end": "2024-05-03T23:59:59.999999",
     "color": "#0000FF",
-    "allDay": false
+    "allDay": true
   }
 ]
