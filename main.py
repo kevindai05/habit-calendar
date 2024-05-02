@@ -4,6 +4,9 @@ from datetime import datetime, time, timedelta
 import json
 from streamlit_calendar import calendar
 
+st.set_page_config(page_title="Habit Calendar", page_icon="📆")
+st.title("Habit Calendar App")
+
 # 2. Constants
 
 # Define the path to the JSON file for events
@@ -71,8 +74,7 @@ def clear_all_events():
 # 4. Streamlit Config
 
 # Set up the Streamlit page
-st.set_page_config(page_title="Habit Calendar", page_icon="📆")
-st.title("Habit Calendar App")
+# Code move to top
 
 # 5. Main Code Interface
 
