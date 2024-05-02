@@ -40,7 +40,6 @@ constant_events = [
     {"title": "Flight to New York", "start": "2024-05-18T12:00:00", "end": "2024-05-18T19:00:00", "color": "#0000FF"},
 ]
 
-
 # 3. Function Definitions
 
 # Load events from the JSON file
@@ -60,6 +59,7 @@ def add_event_to_json(event_data):
     with open(EVENTS_FILE, 'w') as file:
         json.dump(events, file)
     st.success('Event added successfully!')
+    # st.experimental_rerun()  # Rerun the app to refresh data
 
 # Clear json file
 def clear_all_events():
@@ -135,12 +135,18 @@ with st.form("event_form"):
             }
             add_event_to_json(event_data)
 
+# Clear calendar
 if st.button('Clear All Events'):
     clear_all_events()
+
+if st.button('Refresh Page'):
+    # This line will rerun the entire script, refreshing the page
+    st.experimental_rerun()
 
 # Calendar component
 st.subheader('Calendar')
 events = load_events()  # Load events for the calendar
+
 calendar_options = {
     "locale": "en",
     "selectable": True,
