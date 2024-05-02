@@ -3,9 +3,10 @@ import streamlit as st
 from datetime import datetime, time, timedelta
 import json
 from streamlit_calendar import calendar
+from event_scheduler import add_habit_to_calendar
 
 st.set_page_config(page_title="Habit Calendar", page_icon="📆")
-st.title("Habit Calendar App")
+st.title("Habit Calendar App 📆")
 
 # 2. Constants
 
@@ -44,6 +45,14 @@ constant_events = [
 ]
 
 # 3. Function Definitions
+#  Function for habits
+def custom_time_input(label, default_value):
+    """Allows users to select a time or enter a custom time."""
+    time_options = ['07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', 'Custom']
+    selected_time = st.selectbox(label, options=time_options, index=time_options.index(default_value))
+    if selected_time == 'Custom':
+        return st.time_input("Specify your time", key=label)
+    return datetime.strptime(selected_time, '%H:%M').time()
 
 # Load events from the JSON file
 def load_events():
@@ -62,7 +71,6 @@ def add_event_to_json(event_data):
     with open(EVENTS_FILE, 'w') as file:
         json.dump(events, file)
     st.success('Event added successfully!')
-    # st.experimental_rerun()  # Rerun the app to refresh data
 
 # Clear json file
 def clear_all_events():
@@ -77,6 +85,33 @@ def clear_all_events():
 # Code move to top
 
 # 5. Main Code Interface
+# Habit form
+with st.form("habit_form"):
+    st.title("Add New Habit")
+    name = st.text_input("Name of the Habit")
+    description = st.text_area("Description")
+    color = st.color_picker("Event Color", "#6a0dad")  # Default color
+
+    start_date = st.date_input("Start Date")
+    end_date = st.date_input("End Date")
+    start_time = st.time_input("Start Time", value=time(12, 0))  # Default to 12:00 PM
+    end_time = st.time_input("End Time", value=time(18, 0))  # Default to 6:00 PM
+
+    duration = st.number_input("Duration of Event (minutes)", min_value=5, value=30, step=5)
+    buffer_zone = st.number_input("Time Buffer Zone (minutes)", min_value=0, value=15, step=5)
+    times_per_week = st.slider("Occurrences per Week", 1, 7, 4)
+    times_per_day = st.slider("Occurrences per Day", 1, 3, 1)
+
+    submit_button = st.form_submit_button("Schedule Habit")
+if submit_button:
+    success_message = add_habit_to_calendar(
+        name, description, color,
+        start_date, end_date,
+        start_time, end_time,
+        duration, buffer_zone,
+        times_per_week, times_per_day
+    )
+    st.success(success_message)
 
 # Event form with validation
 with st.form("event_form"):
@@ -140,10 +175,6 @@ with st.form("event_form"):
 # Clear calendar
 if st.button('Clear All Events'):
     clear_all_events()
-
-if st.button('Refresh Page'):
-    # This line will rerun the entire script, refreshing the page
-    st.experimental_rerun()
 
 # Calendar component
 st.subheader('Calendar')
