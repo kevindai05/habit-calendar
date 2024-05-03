@@ -98,17 +98,19 @@ with st.form("habit_form"):
     end_time = st.time_input("End Time", value=time(18, 0))  # Default to 6:00 PM
 
     duration = st.number_input("Duration of Event (minutes)", min_value=5, value=30, step=5)
-    buffer_zone = st.number_input("Time Buffer Zone (minutes)", min_value=0, value=15, step=5)
+    # buffer_zone = st.number_input("Time Buffer Zone (minutes)", min_value=0, value=15, step=5)
     times_per_week = st.slider("Occurrences per Week", 1, 7, 4)
     times_per_day = st.slider("Occurrences per Day", 1, 3, 1)
 
     submit_button = st.form_submit_button("Schedule Habit")
+    
 if submit_button:
     success_message = add_habit_to_calendar(
         name, description, color,
         start_date, end_date,
         start_time, end_time,
-        duration, buffer_zone,
+        duration, 
+        # buffer_zone,
         times_per_week, times_per_day
     )
     st.success(success_message)
