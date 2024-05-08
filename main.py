@@ -90,10 +90,12 @@ with st.form("habit_form"):
     st.title("Add New Habit")
     name = st.text_input("Name of the Habit")
     description = st.text_area("Description")
-    color = st.color_picker("Event Color", "#6a0dad")  # Default color
+    color = st.color_picker("Event Color", "#12E0E0")  # Default color: Teal
 
-    start_date = st.date_input("Start Date")
-    end_date = st.date_input("End Date")
+    # Setting default start and end dates
+    start_date = st.date_input("Start Date", value=datetime(2024, 5, 13))
+    end_date = st.date_input("End Date", value=datetime(2024, 5, 18))
+
     start_time = st.time_input("Start Time", value=time(12, 0))  # Default to 12:00 PM
     end_time = st.time_input("End Time", value=time(18, 0))  # Default to 6:00 PM
 
