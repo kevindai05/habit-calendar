@@ -15,6 +15,7 @@ This project is currently in the development phase and is considered a work in p
 - **Python:** The core programming language used for development.
 - **Streamlit:** A powerful framework that turns Python scripts into shareable web apps.
 - **Calendar-Streamlit Library:** Adapted from FullCalendar, this library provides functionalities to render interactive calendars.
+- https://github.com/im-perativa/streamlit-calendar?tab=readme-ov-file
 
 ## Getting Started
 To get started with Habit Calendar, follow the instructions below:
